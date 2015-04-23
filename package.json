@@ -1,0 +1,29 @@
+{
+  "name": "jekyll-store-visited",
+  "main": "./src/JekyllStoreVisited.js",
+  "version": "0.0.1",
+  "description": "Recently Visited plugin for Jekyll-Store Engine",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jekyll-store/visited.git"
+  },
+  "dependencies": {
+    "big.js": "^3.0.1",
+    "immutable": "^3.6.4",
+    "reflux": "^0.2.7"
+  },
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "mocha": "^2.2.1",
+    "rewire": "^2.3.1",
+    "sinon": "^1.14.1"
+  },
+  "peerDependencies": {
+    "jekyll-store-engine": ">=0.1.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Max White",
+  "license": "ISC"
+}
