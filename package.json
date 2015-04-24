@@ -1,7 +1,7 @@
 {
   "name": "jekyll-store-visited",
   "main": "./src/JekyllStoreVisited.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Recently Visited plugin for Jekyll-Store Engine",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "sinon": "^1.14.1"
   },
   "peerDependencies": {
-    "jekyll-store-engine": ">=0.1.1"
+    "jekyll-store-engine": ">=0.1.2"
   },
   "scripts": {
     "test": "mocha"
