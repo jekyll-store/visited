@@ -14,7 +14,7 @@ describe('VisitedStore', function() {
   VisitedStore.visited = I.fromJS([{ name: 'wallet' }, { name: 'coat' }]);
 
   sinon.spy(VisitedStore, 'update');
-  after(function() { VisitedStore.update.reset(); });
+  afterEach(function() { VisitedStore.update.reset(); });
 
   it('adds to visited', function() {
     var expected = [{ name: 'tie' }, { name: 'wallet' }, { name: 'coat' }];
