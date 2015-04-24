@@ -2,7 +2,7 @@ var assert = require('chai').assert;
 var sinon = require('sinon');
 var I = require('immutable');
 var rewire = require('rewire');
-var VisitedStore = rewire('../../src/VisitedStore');
+var VisitedStore = rewire('../src/VisitedStore');
 
 describe('VisitedStore', function() {
   VisitedStore.products = I.fromJS({
