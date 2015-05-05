@@ -1,4 +1,4 @@
-# Jekll-Store/Visited
+# Jekyll-Store/Visited
 
 [![Build Status](https://travis-ci.org/jekyll-store/visited.svg?branch=master)](https://travis-ci.org/jekyll-store/visited)
 
