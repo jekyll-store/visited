@@ -1,39 +1,40 @@
 var assert = require('chai').assert;
 var sinon = require('sinon');
-var I = require('immutable');
-var VisitedStore = require('../src/VisitedStore');
+var I = require('seamless-immutable');
+var s = require('../src/VisitedStore');
 
 describe('VisitedStore', function() {
-  VisitedStore.products = I.fromJS({
-    'wallet': { name: 'wallet' },
-    'glove': { name: 'glove' },
-    'tie': { name: 'tie' },
-    'coat': { name: 'coat' }
+  before(function() {
+    s.update = sinon.spy();
+    s.visited = I([{ name: 'wallet' }, { name: 'coat' }]);
+    s.products = I({
+      'wallet': { name: 'wallet' },
+      'glove': { name: 'glove' },
+      'tie': { name: 'tie' },
+      'coat': { name: 'coat' }
+    });
   });
 
-  VisitedStore.visited = I.fromJS([{ name: 'wallet' }, { name: 'coat' }]);
-
-  sinon.spy(VisitedStore, 'update');
-  afterEach(function() { VisitedStore.update.reset(); });
+  afterEach(function() { s.update.reset(); })
 
   it('adds to visited', function() {
-    var expected = [{ name: 'tie' }, { name: 'wallet' }, { name: 'coat' }];
-    VisitedStore.onVisit({ name: 'tie' });
-    assert(VisitedStore.update.called);
-    assert(VisitedStore.visited.equals(I.fromJS(expected)))
+    var expected = I([{ name: 'tie' }, { name: 'wallet' }, { name: 'coat' }]);
+    s.onVisit({ name: 'tie' });
+    assert(s.update.called);
+    assert.deepEqual(s.visited, expected);
   });
 
   it('moves to top if in visited', function() {
-    var expected = [{ name: 'wallet' }, { name: 'tie' }, { name: 'coat' }];
-    VisitedStore.onVisit({ name: 'wallet' });
-    assert(VisitedStore.update.called);
-    assert(VisitedStore.visited.equals(I.fromJS(expected)))
+    var expected = I([{ name: 'wallet' }, { name: 'tie' }, { name: 'coat' }]);
+    s.onVisit({ name: 'wallet' });
+    assert(s.update.called);
+    assert.deepEqual(s.visited, expected);
   });
 
   it('pops if limit is reached', function() {
-    var expected = [{ name: 'glove' }, { name: 'wallet' }, { name: 'tie' }];
-    VisitedStore.onVisit({ name: 'glove' });
-    assert(VisitedStore.update.called);
-    assert(VisitedStore.visited.equals(I.fromJS(expected)))
+    var expected = I([{ name: 'glove' }, { name: 'wallet' }, { name: 'tie' }]);
+    s.onVisit({ name: 'glove' });
+    assert(s.update.called);
+    assert.deepEqual(s.visited, expected);
   });
 });

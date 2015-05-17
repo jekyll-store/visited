@@ -42,10 +42,10 @@ Example output:
 
 ```javascript
 {
-  visited: Immutable.List({
-    Immutable.Map({ name: 'Jumper', price: Big(24.30) }),
-    Immutable.Map({ name: 'Cardigan', price: Big(21.45) }),
-    Immutable.Map({ name: 'Pullover', price: Big(13.90) })
+  visited: Immutable({
+    { name: 'Jumper', price: 24.30 }),
+    { name: 'Cardigan', price: 21.45 }),
+    { name: 'Pullover', price: 13.90 })
   })
 }
 ```
